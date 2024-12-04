@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Unit Tests Debugger",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "test:debug",
+        "--",
+        "--dir",
+        "src/domain"
+      ],
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**",
+      ],
+      "type": "node",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/apps/api",
+      "stopOnEntry": true
+    },
+    {
+      "name": "Debug Current Test File",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "test:debug",
+        "--",
+        "${fileBasename}"
+      ],
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/apps/api",
+      "stopOnEntry": true
+    }
+  ]
+}

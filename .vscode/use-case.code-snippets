@@ -1,0 +1,15 @@
+{
+	"Use case class": {
+		"scope": "javascript, typescript",
+		"prefix": "usecase",
+		"body": [
+			"interface ${TM_FILENAME_BASE/([^\\-]+)(\\-|$)/${1:/capitalize}/g}UseCaseRequest {}\n",
+			"type ${TM_FILENAME_BASE/([^\\-]+)(\\-|$)/${1:/capitalize}/g}UseCaseResponse = {}\n",
+			"export class ${TM_FILENAME_BASE/([^\\-]+)(\\-|$)/${1:/capitalize}/g}UseCase {",
+			"\tconstructor(private ${1:REPOSITORY}:${2:TYPE_REPOSITORY}) {}",
+			"\tasync execute({}: ${TM_FILENAME_BASE/([^\\-]+)(\\-|$)/${1:/capitalize}/g}UseCaseRequest): Promise<${TM_FILENAME_BASE/([^\\-]+)(\\-|$)/${1:/capitalize}/g}UseCaseResponse> {}",
+			"}"
+		],
+		"description": "Class struture for a new Use Case."
+	}
+}

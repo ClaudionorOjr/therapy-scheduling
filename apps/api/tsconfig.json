@@ -1,0 +1,14 @@
+{
+  "extends": "@saas/typescript-config/node.json",
+  "include": ["src/**/*", "test/**/*"],
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": ["./src/core/*"],
+      "@domain/*": ["./src/domain/*"],
+      "@infra/*": ["./src/infra/*"],
+    }
+  }
+}

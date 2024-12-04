@@ -1,0 +1,29 @@
+{
+  "Controller": {
+    "scope": "javascript, typescript",
+    "prefix": "controller",
+    "body": [
+      "import { FastifyReply, FastifyRequest } from 'fastify'",
+      "import { container } from 'tsyringe'",
+      "import { z } from 'zod'\n",
+      "export async function ${TM_FILENAME_BASE/(.+)-controller/${1:/pascalcase}/}(request: FastifyRequest, reply: FastifyReply) {",
+      "\tconst ${TM_FILENAME_BASE/(.+)-controller/${1:/camelcase}/}${1|BodySchema,ParamsSchema|} = z.object({})\n",
+      "\tconst {} = ${TM_FILENAME_BASE/(.+)-controller/${1:/camelcase}/}${1|BodySchema,ParamsSchema|}.parse(request.body)\n",
+      "\ttry {",
+      "\t\tconst ${TM_FILENAME_BASE/(.+)-controller/${1:/camelcase}/}UseCase = container.resolve(${TM_FILENAME_BASE/(.+)-controller/${1:/pascalcase}/}UseCase)\n",
+      "\t\tconst result = await ${TM_FILENAME_BASE/(.+)-controller/${1:/camelcase}/}UseCase.execute({})\n",
+      "\t\tif (result.isFailure()) {",
+      "\t\t\tthrow result.value",
+      "\t\t}\n",
+      "\t\treturn reply.status(${2:STATUS_CODE}).send()",
+      "\t} catch (error) {",
+      "\t\tif (error instanceof ${3:ERROR}) {",
+      "\t\t\treturn reply.status().send({ message: error.message })",
+      "\t\t}",
+      "\t\tthrow error",
+      "\t}",
+      "}"
+    ],
+    "description": "Code for a new Controller."
+  }
+}

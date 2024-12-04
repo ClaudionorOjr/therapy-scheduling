@@ -1,0 +1,12 @@
+services:
+  therapy-scheduling-server:
+    container_name: database-pg
+    image: bitnami/postgresql:latest
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: database
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/pg:/bitnami/postgresql
